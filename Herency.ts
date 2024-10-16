@@ -1,40 +1,38 @@
-//creo la clase animal
-interface animal {
-    name: string;
-    age : number;
+import { json } from "stream/consumers";
+
+interface employee{
+    id:number;
+    name:string;
+    salary:number;
+    city:string;
 }
-//creo la clase perro que hereda de la clase animal
-class dog implements animal{
-    name : string;
-    age : number;
-    constructor(name : string, age : number){
+class softwareEngineer implements employee{
+    id:number;
+    name:string;
+    salary:number;
+    city:string;
+    position:string;
+    constructor(id:number, name:string, salary:number, city:string, position:string){
+        this.id = id;
         this.name = name;
-        this.age = age;
+        this.salary = salary;
+        this.city = city;
+        this.position = position;
     }
-     makeSound() : void{
-        console.log("guau guau");
-        
-    }
-
-
-
 }
-//creo la clase gato que hereda de la clase animal 
-class cat implements animal{
-    name : string;
-    age : number;
-    //creo el constructor de la clase
-    constructor(name : string, age : number){
+class manager implements employee{
+    id:number;
+    name:string;
+    salary:number;
+    city:string;
+    constructor(id:number, name:string, salary:number, city:string){
+        this.id = id;
         this.name = name;
-        this.age = age;
-    }
-    //creo un método de  hacer ruido
-    makeSound() : void{
-        console.log("meow meow");
-        
+        this.salary = salary;
+        this.city = city;
     }
 }
-let luna = new dog("luna", 10);
-let gata = new cat("gata", 5);
-luna.makeSound();
-gata.makeSound();
+let manuel = new softwareEngineer(1, "Manuel", 1000, "Cordoba", "Software Engineer");
+let elena = new manager(2, "Elena", 2000, "Cordoba");
+console.log(manuel)
+console.log(elena)  
