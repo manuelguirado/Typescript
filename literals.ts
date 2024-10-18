@@ -12,5 +12,6 @@ function sortArray(order: Order) : void{
     }
 
 }
+
 sortArray("asc");
 sortArray("desc");
