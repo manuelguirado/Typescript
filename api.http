@@ -1,0 +1,49 @@
+###
+POST  http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "id":1,
+    "name" : "paco",
+    "email" : "paco@gmail.com",
+    "password" : "8230dfkaskdjf"
+}
+ 
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "id":2,
+    "name" : "jesu",
+    "email": "jesus@gmail.com",
+    "password" : "jñjkjsdfijedkfji9320"
+}
+###
+GET  http://localhost:3000/users
+###
+PUT  http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name" : "mario",
+    "email" : "mario@gmail.com",
+    "password" :  "hi19u9ujña91"
+}
+###  
+POST  http://localhost:3000/users
+Content-Type: application/json
+
+
+{
+    "id" : 4,
+    "name" : "ana",
+    "email" : "anabgjimenez@gmail.com",
+    "password" : "h910i9jkjij10fjisdf1132"
+}
+###
+
+DELETE  http://localhost:3000/users/4
+
+Content-Type: application/json
