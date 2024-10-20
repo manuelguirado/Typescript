@@ -1,6 +1,9 @@
 import express, { Request, Response } from "express";
+import { connectDatabase,addUser,getUsers,updateUser,deleteUser } from "./connectdatabase";
 import fs from "fs";
 const app = express();
+//connect to the database
+connectDatabase();
 //create a interface  for the users
 interface User {
     id: number;
@@ -38,9 +41,11 @@ app.post("/users", (req : Request , res : Response) => {
     };
     //push the new user
     users.push(newUser);
-    //send the new user
+    //add user to the database
+    addUser(name, email, password);
+    res.status(201).json({ message: "User created successfully" });
    
-     res.status(201).json({ newUser });
+     
 })
 //get specefic user
 app.get("/users/:id", (req: Request, res: Response) => {
@@ -52,6 +57,8 @@ app.get("/users/:id", (req: Request, res: Response) => {
         //if the user is not found
             res.status(404).json({ error: "User not found" });
     }
+     //get the users 
+     getUsers( );
     res.json(usres);
 
 
@@ -66,7 +73,7 @@ app.put("/users/:id", (req: Request, res: Response) => {
   if (userIndex === -1) {
       res.status(404).json({ error: "User not found" });
   }
-  users[userIndex] = { id: userId, name, email, password };
+  updateUser(userId, name, email, password);
   res.json({ message: "User updated successfully" });
 
 
@@ -78,7 +85,8 @@ const userIndex = users.findIndex((user) => user.id === userId);
  if ( userIndex === -1) {
   res.status(404).json({ error: "User not found" });
  }
- users.splice(userIndex, 1);
+
+ deleteUser(userId);
  res.status(204).send();
 
 

@@ -20,6 +20,16 @@ Content-Type: application/json
     "password" : "jñjkjsdfijedkfji9320"
 }
 ###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "id":5,
+    "name" : "elena",
+    "email": "elenas@gmail.com",
+    "password" : "h190fjkñaf190u"
+}
+###
 GET  http://localhost:3000/users
 ###
 PUT  http://localhost:3000/users/1
@@ -44,6 +54,6 @@ Content-Type: application/json
 }
 ###
 
-DELETE  http://localhost:3000/users/4
+DELETE  http://localhost:3000/users/2
 
 Content-Type: application/json
