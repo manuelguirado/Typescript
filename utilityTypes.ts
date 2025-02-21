@@ -40,6 +40,9 @@ let  cats : Record<catName, cats> = { //create a record type with the catName as
     mordred : {age : 16, breed : "Siamese"}
 
 }
+type animals = "dog" | "cat" | "bird";
+type exclude = Exclude<animals,"dog">; // exclude dog from animals
+type extract  = Extract<animals, "dog">; // extract dog from animals
 type usuarioPartila = Partial<usuario>; // all properties are optional
 type usuariosinEmail = Omit<usuario, "email">; // omit email property
 type awaitedtype = Awaited<Promise<String>>; // await a promise type 
@@ -62,6 +65,11 @@ let userPartial : usuarioPartila= {
     
     name : "John"
 }
+let animal : animals = "dog";
+let excludeAnimal : exclude = "cat";
+let extractAnimal : extract = "dog";
+console.log(excludeAnimal + "the animal is excluded");
+console.log(extractAnimal + "the animal is extracted");
 console.log(userWithoutEmail);
 console.log(userPartial);
 console.log(promise ) 
