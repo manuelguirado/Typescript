@@ -2,14 +2,12 @@
 
 import mysql from 'mysql';
 
+
 const connection = mysql.createConnection({
-        host: '192.168.1.137',
+        host: '192.168.1.145',
         user: 'manudev',
         password: '270504',
-        database : 'USERS'
-        
-
-
+        database : 'todo'
 })
 
 export  function connectDatabase() {
@@ -20,26 +18,39 @@ export  function connectDatabase() {
 }
 
 
-export function addUser(name: string, email: string, password: string) : void {
-    connection.query(`INSERT INTO users (name, email, password) VALUES ('${name}', '${email}', '${password}')`);
-    console.log("user added");
+export function addTask( task : string, description:string, completed : string){
+    let query = `INSERT INTO todo (id, TASK, DESCRIPTION, completed) VALUES ( '${task}', '${description}', ${completed})`;
+    connection.query(query, (error, result) => {
+        if (error) throw error;
+       JSON.stringify(result);
+    })
+}
+export function getTask(){
+    let query =  `SELECT *  FROM todo`;
+    connection.query(query,(error, result) => {
+        if (error) throw error;
+        JSON.stringify(result);
 
+    })
 }
-export  function getUsers() {
-    connection.query('SELECT * FROM users');
-    console.log("users fetched");
+export function deleteTask(id : number){
+    let query = `SELECT * FROM todo where id =  ${id}`;
+    connection.query(query,(error, result) =>  {
+         if ( error) throw error;
+         JSON.stringify(result);
+    })
 }
-export  function updateUser(id: number, name: string, email: string, password: string) {
-    connection.query(`UPDATE users SET name = '${name}', email = '${email}', password = '${password}' WHERE id = ${id}`);
-    console.log("user updated");
-}
-export function deleteUser(id: number) {
-    connection.query(`DELETE FROM users WHERE id = ${id}`);
+export function updateTask(id : number, task : string, description : string, completed : boolean){
+  let query = ` UPDATE todo set (${id}, '${task}', '${description}', ${completed})`;
+  connection.query(query,(error,result) => {
+    if (error) throw error;
+    JSON.stringify(result);
+ })
 }
 module.exports = {
     connectDatabase,
-    addUser,
-    getUsers,
-    updateUser,
-    deleteUser
+    addTask,
+    getTask,
+    deleteTask,
+    updateTask
 }

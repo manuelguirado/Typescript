@@ -1,9 +1,9 @@
 import express, { Request, Response } from "express";
-import { connectDatabase,addUser,getUsers,updateUser,deleteUser } from "./connectdatabase";
+//import { connectDatabase,addUser,getUsers,updateUser,deleteUser } from "./connectdatabase";
 import fs from "fs";
 const app = express();
 //connect to the database
-connectDatabase();
+//connectDatabase();
 //create a interface  for the users
 interface User {
     id: number;
